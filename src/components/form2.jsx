@@ -20,12 +20,9 @@ const FormS = () => {
             isEditing: false
         }
     ]);
-    const [ note, setNote ] = useState();
     const inputRef = useRef();
     const noteRef = useRef();
-    const [editMode, setEditMode] = useState(false)
     let UniqKey = 123;
-
 
 
     const handleSubmit = (e) => {
@@ -36,8 +33,10 @@ const FormS = () => {
     }
 
     const addTodo = text => {
-        const newTodos = [...todos, { text }];
-        setTodos(newTodos);
+        if ( text !== '') {
+            const newTodos = [...todos, { text }]
+            setTodos(newTodos);
+        }
     };
 
     const removeTodo = inx => {
@@ -54,25 +53,24 @@ const FormS = () => {
 
     const editTodo = inx => {
         const newTodos = [...todos];
-        setEditMode(!editMode)
         newTodos[inx].isEditing = !newTodos[inx].isEditing;
-        setNote(newTodos[inx].text);
         setTodos(newTodos);
     }
 
     const saveTodo = (inx) => {
         const newTodos = [...todos];
         newTodos[inx].isEditing = !newTodos[inx].isEditing;
-        newTodos[inx].text = note;
+        newTodos[inx].text = noteRef.current.value;
         setTodos(newTodos);
     }
 
+    const clearInput = () => {
+        setNewTodo('');
+    }
 
-    // useEffect(() => {
-    //     if (!editMode) {
-    //         noteRef.current.focus();
-    //     }
-    // }, [editMode])
+    useEffect(() => {
+        console.log('use effect')
+    }, [todos])
 
     return (
         <>
@@ -80,6 +78,7 @@ const FormS = () => {
                 <input
                     value={newTodo}
                     onChange={(e) => setNewTodo(e.target.value)}
+                    onFocus={clearInput}
                     ref={inputRef}
                 />
                 <button type="submit" alt="add-note">Add</button>
@@ -105,9 +104,8 @@ const FormS = () => {
                                             :
                                             <>
                                                 <input
-                                                    value={note}
+                                                    defaultValue={todo.text}
                                                     ref={noteRef}
-                                                    onChange={(e) => setNote(e.target.value)}
                                                 />
 
                                                 <div className="notes__btns">
