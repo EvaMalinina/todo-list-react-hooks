@@ -1,107 +1,139 @@
 import  React, { useState, useEffect, useRef } from 'react';
 
 const Form = () => {
-    let UniqKey = 192;
 
-    const [ UniqueId, setUniqueId ] = useState(123)
-    const [ newTodo, addNewTodo ] = useState({id: 1, text: 'new task', isEditing: false});
-    const [ todos, setTodos ] = useState([])
+    const [ newTodo, setNewTodo ] = useState('What\'s need to be done?');
+    const [ todos, setTodos ] = useState([
+        {
+            text: "Learn about React",
+            isCompleted: false,
+            isEditing: false
+        },
+        {
+            text: "Meet friend for lunch",
+            isCompleted: false,
+            isEditing: false
+        },
+        {
+            text: "Build really cool todo app",
+            isCompleted: false,
+            isEditing: false
+        }
+    ]);
     const inputRef = useRef();
-    // const todoRef = useRef();
-    // const [isEditing, setEditing] = useState(false);
-    // const [ note, setNote ] = useState()
-    //
-    // const toggleEditing = (todoRef) => {
-    //     setEditing(!isEditing);
-    //     // if(!isEditing) {
-    //     //             todoRef.current.focus();
-    //     //         }
-    // };
+    const noteRef = useRef();
+    let UniqKey = 123;
+    const [ hint, setHint ] = useState('')
+
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        setTodos([...todos, newTodo]);
-        inputRef.current.value = '';
+        addTodo(newTodo);
+        clearInput();
+        inputRef.current.focus();
+    }
+
+    const addTodo = text => {
+        if ( text !== '') {
+            const newTodos = [...todos, { text }]
+            setTodos(newTodos);
+        } else {
+            setHint('Task can\'t be empty');
+        }
     };
 
-    const removeTodo = index => {
+    const removeTodo = inx => {
+        const newArr = [...todos]
+        newArr.splice(inx, 1)
+        setTodos(newArr)
+    }
+
+    const completeTodo = inx => {
         const newTodos = [...todos];
-        newTodos.splice(index, 1);
+        newTodos[inx].isCompleted = true;
         setTodos(newTodos);
     };
 
-    // const deleteTodo = (inx) => {
-    //
-    //     // console.log('id', deleteTodoId)
-    //     console.log('todos', todos)
-    //     // // todos.forEach((el) => console.log(el.id))
-    //     // const newArr = todos.filter((el) => el.id !== deleteTodoId)
-    //
-    //     // setTodos(newArr);
-    //     // const indx = todos.findIndex((el) => el.id === deleteTodoId);
-    //     // console.log('indx', indx)
-    //     // console.log('deleteTodoId', deleteTodoId)
-    //     // // const newArr = todos.filter((indx) => indx !== deleteTodoId)
-    //     // let copy = [...todos]
-    //     // const newArr = [
-    //     //     ...copy.slice( 0, indx ),
-    //     //     ...copy.slice( indx +1)
-    //     // ];
-    //
-    //     // console.log('todos', todos)
-    //     const newArr = todos.slice();
-    //     newArr.splice(inx, 1)
-    //     console.log('newArr', newArr)
-    //     return setTodos(newArr);
-    // };
+    const editTodo = inx => {
+        const newTodos = [...todos];
+        newTodos[inx].isEditing = !newTodos[inx].isEditing;
+        setTodos(newTodos);
+    }
 
-    // const  handleInputChange = (e) => {
-    //     setNote(e.target.value);
-    // };
-    //
-    // useEffect(() => {
-    //     inputRef.current.focus();
-    //     // deleteTodo()
-    //     // UniqueId++;
-    // }, [newTodo, todos]);
+    const saveTodo = (inx) => {
+        const newTodos = [...todos];
+        newTodos[inx].isEditing = !newTodos[inx].isEditing;
+        newTodos[inx].text = noteRef.current.value;
+        setTodos(newTodos);
+    }
 
-    // useEffect((todoRef) => {
-    //     if(!isEditing) {
-    //         todoRef.current.focus();
-    //     }
-    // }, [!isEditing])
+    const clearInput = () => {
+        setNewTodo('');
+    }
+
+    const clearHint = () => {
+        setHint('');
+    }
+
+    const setTodo = todo => {
+        clearHint();
+        setNewTodo(todo);
+    }
+
+    useEffect(() => {
+        console.log('use effect')
+    }, [todos])
 
     return (
-       <>
-           <form onSubmit={(e) => handleSubmit(e)}>
-               <input
-                   defaultValue={newTodo.text}
-                   onChange={(e) => addNewTodo({...newTodo, text: e.target.value, id: todos.length + 1})}
-                   ref={inputRef}
-               />
-               <button type="submit" alt="add-note">Add</button>
-               <div className="notes">----------------------------------------
-                   <ul>
-                       {todos.map((newTodo, inx) => {
-                           return(
-                               <li key={UniqKey++}>
-                                   <input
-                                       type="string"
-                                       defaultValue={newTodo.text}
-                                       // ref={todoRef}
-                                       // onChange={(e) => setNote(e.target.value)}
-                                       // onBlur={(e) => handleInputChange(e)}
-                                   />
+        <>
+            <form onSubmit={handleSubmit}>
+                <p>{hint}</p>
+                <input
+                    value={newTodo}
+                    onChange={(e) => setTodo(e.target.value)}
+                    onFocus={clearInput}
+                    ref={inputRef}
+                />
+                <button type="submit" alt="add-note">Add</button>
+                <div className="notes">----------------------------------------
+                    <ul>
+                        {todos.map((todo, inx) => (
+                                <li key={UniqKey++}>
+                                    {
+                                        (!todo.isEditing) ?
+                                            <>
+                                                <div style={{
+                                                    textDecoration: todo.isCompleted ? "line-through" : "",
+                                                }}>
+                                                    {todo.text}
+                                                </div>
 
-                                   {/*<button type="button" onClick={(newTodo) => toggleEditing(newTodo)}>edit</button>*/}
-                                   <button type="button" onClick={() => removeTodo(inx)}>delete</button>
-                               </li>
-                           )})}
-                   </ul>
-               </div>
+                                                <div className="notes__btns">
+                                                    <button type="button" onClick={() => editTodo(inx)}>edit</button>
+                                                    <button type="button" onClick={() => completeTodo(inx)}>done</button>
+                                                    <button type="button" onClick={() => removeTodo(inx)}>delete</button>
+                                                </div>
+                                            </>
+                                            :
+                                            <>
+                                                <input
+                                                    defaultValue={todo.text}
+                                                    ref={noteRef}
+                                                />
 
-           </form>
-       </>
+                                                <div className="notes__btns">
+                                                    <button type="button" onClick={() => saveTodo(inx)}>save</button>
+                                                    <button type="button" onClick={() => removeTodo(inx)}>delete</button>
+                                                </div>
+                                            </>
+                                    }
+                                </li>
+                            ))}
+                    </ul>
+                </div>
+
+            </form>
+        </>
     )
 }
 
