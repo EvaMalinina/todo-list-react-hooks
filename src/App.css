@@ -36,6 +36,20 @@ h1 {
   margin-bottom: 20px;
 }
 
-notes__btns {
+.form {
+  width: 400px;
+}
+
+.form__input {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.form__btn-wrapper {
+  margin-left: 20px;
+}
+
+.notes__btns {
   width: 35%;
 }
