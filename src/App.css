@@ -4,7 +4,7 @@ ul {
 }
 
 li {
-  background: pink;
+  background: lightyellow;
   padding: 10px;
   border: 1px solid black;
   text-align: left;
@@ -44,6 +44,9 @@ h1 {
   display: flex;
   width: 100%;
   justify-content: space-between;
+  border-bottom: 1px dashed gray;
+  padding-bottom: 10px;
+  height: 67px;
 }
 
 .form__btn-wrapper {

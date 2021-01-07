@@ -1,33 +1,6 @@
 import  React, { useState, useEffect, useRef } from 'react';
-import Button from "@material-ui/core/Button";
-import { makeStyles, createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
-import TextField from "@material-ui/core/TextField";
-import FormHelperText from '@material-ui/core/FormHelperText';
-import FormControl from '@material-ui/core/FormControl';
-
-const useStyles = makeStyles({
-    root: {
-        background: 'linear-gradient(45deg, gray 30%, black 90%)',
-        border: 0,
-        borderRadius: 3,
-        color: 'white',
-        height: 55,
-        padding: '0 30px',
-        whiteSpace: 'nowrap'
-    },
-    mainInput: {
-        width: '90%'
-    },
-    label: {
-        width: '100%'
-    }
-});
-
-const theme = createMuiTheme({
-    palette: {
-        primary: { main: '#000000' }
-    }
-});
+import TodoCreator from "./formInput";
+import TodoList from "./list";
 
 
 const Form = () => {
@@ -52,9 +25,7 @@ const Form = () => {
     ]);
     const inputRef = useRef();
     const noteRef = useRef();
-    let UniqKey = 123;
     const [ isInputEmpty, setInputEmpty ] = useState(false)
-    const classes = useStyles();
 
 
     const handleSubmit = (e) => {
@@ -113,77 +84,25 @@ const Form = () => {
     }, [todos])
 
     return (
-        <>
-            <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit}>
 
-                <div className="form__input">
-                    <ThemeProvider theme={theme}>
-                        <FormControl   className={classes.label}>
-                            <TextField
-                                id="outlined-basic"
-                                label="What's need to be done?"
-                                value={newTodo}
-                                variant="outlined"
-                                onChange={(e) => setTodo(e.target.value)}
-                                onFocus={clearInput}
-                                ref={inputRef}
-                                className={classes.mainInput}
-                                aria-describedby="component-error-text"
-                            />
+                <TodoCreator
+                    todo={newTodo}
+                    setTodo={setTodo}
+                    clearInput={clearInput}
+                    inputRef={inputRef}
+                    isInputEmpty={isInputEmpty}
+                />
 
-                            { !isInputEmpty ?
-                                <></>
-                                :
-                                <>
-                                    <FormHelperText id="component-error-text">Task can't be empty</FormHelperText>
-                                </>
-                            }
-                        </FormControl>
-                    </ThemeProvider>
-                    {/*<div className="form__btn-wrapper">*/}
-                        <Button type="submit" alt="add-note" className={classes.root}>Add task</Button>
-                    {/*</div>*/}
-                </div>
-
-                <div className="notes">----------------------------------------
-                    <ul>
-                        {todos.map((todo, inx) => (
-                                <li key={UniqKey++}>
-                                    {
-                                        (!todo.isEditing) ?
-                                            <>
-                                                <div style={{
-                                                    textDecoration: todo.isCompleted ? "line-through" : "",
-                                                }}>
-                                                    {todo.text}
-                                                </div>
-
-                                                <div className="notes__btns">
-                                                    <button type="button" onClick={() => editTodo(inx)}>edit</button>
-                                                    <button type="button" onClick={() => completeTodo(inx)}>done</button>
-                                                    <button type="button" onClick={() => removeTodo(inx)}>delete</button>
-                                                </div>
-                                            </>
-                                            :
-                                            <>
-                                                <input
-                                                    defaultValue={todo.text}
-                                                    ref={noteRef}
-                                                />
-
-                                                <div className="notes__btns">
-                                                    <button type="button" onClick={() => saveTodo(inx)}>save</button>
-                                                    <button type="button" onClick={() => removeTodo(inx)}>delete</button>
-                                                </div>
-                                            </>
-                                    }
-                                </li>
-                            ))}
-                    </ul>
-                </div>
-
+                <TodoList
+                    todos={todos}
+                    completeTodo={completeTodo}
+                    editTodo={editTodo}
+                    deleteTodo={removeTodo}
+                    saveTodo={saveTodo}
+                    noteRef={noteRef}
+                />
             </form>
-        </>
     )
 }
 
