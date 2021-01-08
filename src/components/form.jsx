@@ -1,7 +1,14 @@
 import  React, { useState, useEffect, useRef } from 'react';
 import TodoCreator from "./formInput";
 import TodoList from "./list";
+import { createMuiTheme } from "@material-ui/core/styles";
 
+
+const theme = createMuiTheme({
+    palette: {
+        primary: { main: '#000000' },
+    },
+});
 
 const Form = () => {
 
@@ -24,16 +31,22 @@ const Form = () => {
         }
     ]);
     const inputRef = useRef();
-    const noteRef = useRef();
+    const noteRef = useRef({});
     const [ isInputEmpty, setInputEmpty ] = useState(false)
 
 
-    const handleSubmit = (e) => {
+    const handleSubmit = e => {
         e.preventDefault();
         addTodo(newTodo);
         clearInput();
         inputRef.current.focus();
-    }
+    };
+
+    const preventSubmit = e => {
+        if (e.key === 'Enter') {
+            e.preventDefault();
+        }
+    };
 
     const addTodo = text => {
         if ( text !== '') {
@@ -41,6 +54,7 @@ const Form = () => {
             setNewTodo('')
             setTodos(newTodos);
         } else {
+            console.log('text', text)
             setInputEmpty(true);
         }
     };
@@ -53,7 +67,7 @@ const Form = () => {
 
     const completeTodo = inx => {
         const newTodos = [...todos];
-        newTodos[inx].isCompleted = true;
+        newTodos[inx].isCompleted = !newTodos[inx].isCompleted;
         setTodos(newTodos);
     };
 
@@ -66,7 +80,7 @@ const Form = () => {
     const saveTodo = (inx) => {
         const newTodos = [...todos];
         newTodos[inx].isEditing = !newTodos[inx].isEditing;
-        newTodos[inx].text = noteRef.current.value;
+        newTodos[inx].text = noteRef.current[inx].value;
         setTodos(newTodos);
     }
 
@@ -80,27 +94,31 @@ const Form = () => {
     }
 
     useEffect(() => {
-        console.log('use effect')
+
     }, [todos])
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className="form">
 
                 <TodoCreator
+                    theme={theme}
                     todo={newTodo}
                     setTodo={setTodo}
                     clearInput={clearInput}
                     inputRef={inputRef}
                     isInputEmpty={isInputEmpty}
+                    preventSubmit={preventSubmit}
                 />
 
                 <TodoList
+                    theme={theme}
                     todos={todos}
                     completeTodo={completeTodo}
                     editTodo={editTodo}
                     deleteTodo={removeTodo}
                     saveTodo={saveTodo}
                     noteRef={noteRef}
+                    preventSubmit={preventSubmit}
                 />
             </form>
     )

@@ -3,26 +3,6 @@ ul {
   width: 400px;
 }
 
-li {
-  background: lightyellow;
-  padding: 10px;
-  border: 1px solid black;
-  text-align: left;
-  display: flex;
-  justify-content: space-between;
-}
-
-li button {
-  background-color: transparent;
-  border: none;
-  align-self: flex-end;
-}
-
-li button:hover {
-  background-color: black;
-  color: white;
-}
-
 .wrapper {
   text-align: center;
   display: flex;
@@ -43,16 +23,14 @@ h1 {
 .form__input {
   display: flex;
   width: 100%;
-  justify-content: space-between;
   border-bottom: 1px dashed gray;
   padding-bottom: 10px;
   height: 67px;
 }
 
-.form__btn-wrapper {
-  margin-left: 20px;
-}
-
-.notes__btns {
-  width: 35%;
+.form__edit-input {
+  outline: none;
+  border: none;
+  font-size: 20px;
+  width: 90%;
 }
