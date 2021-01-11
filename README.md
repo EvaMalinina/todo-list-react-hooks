@@ -52,6 +52,9 @@ import Button from "@material-ui/core/Button";
 
 Then you can see the result - button "ADD TASK" look like:
 
-![Button example]("src/demo/button git.gif")
+![Button example](https://github.com/EvaMalinina/todo-list-react-hooks/blob/main/src/demo/button%20git.gif)
+
+That was easy, right
+
 
 
