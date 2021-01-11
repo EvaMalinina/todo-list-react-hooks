@@ -1,11 +1,9 @@
-# Getting Started with Create React App
+# Create React App easy 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This recreate the project in your IDE run 
+### `npx create-react-app <name of your app>`
 
-## Available Scripts
-
-In the project directory, you can run:
-
+Then to start the project:
 ### `npm start`
 
 Runs the app in the development mode.\
@@ -14,58 +12,46 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
 
-### `npm test`
+Delete all default markup.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+For components create folder #components in #src folder and place there your react components.
+In my project you can see: Form.jsx, FormInput.jsx, List.jsx.
+You can create as many components as you want and name it how you like.
 
-### `npm run build`
+In this project Material-UI is used.
+To install run:
+### `npm install @material-ui/core`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Material-UI was developed based on the Roboto font.
+The Roboto font will not be automatically loaded into Material-UI.
+*So be sure to install it.*
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+To install run:
+### `npm install fontsource-roboto`
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Then import it in "index.js". To do so write in "index.js":
+### `import 'fontsource-roboto'`;
 
-### `npm run eject`
+To use icons run:
+### `npm install @material-ui/icons`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Button example:
+`
+import  React from 'react';
+import Button from "@material-ui/core/Button";
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+   <Button
+        type="submit"
+        alt="add-note"
+        className={classes.root}
+        onKeyPress={preventSubmit}
+    >
+        Add task
+    </Button>
+`
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Then you can see the result - button "ADD TASK" look like:
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+![Button example]("src/demo/button git.gif")
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-"# todo-list-react-hooks" 
