@@ -51,6 +51,7 @@ import Button from "@material-ui/core/Button";
 `
 
 Then you can see the result - button "ADD TASK" look like:
-https://www.loom.com/share/5e0e8621bb3e469d8a42e903750674cb
+
+![Button example]("src/demo/button git.gif")
 
 
