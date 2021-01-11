@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/EvaMalinina/todo-list-react-hooks/static/css/main.6d368f12.chunk.css",
+    "main.js": "/EvaMalinina/todo-list-react-hooks/static/js/main.77a90fb7.chunk.js",
+    "main.js.map": "/EvaMalinina/todo-list-react-hooks/static/js/main.77a90fb7.chunk.js.map",
+    "runtime-main.js": "/EvaMalinina/todo-list-react-hooks/static/js/runtime-main.00e4f5eb.js",
+    "runtime-main.js.map": "/EvaMalinina/todo-list-react-hooks/static/js/runtime-main.00e4f5eb.js.map",
+    "static/css/2.f5e1fc08.chunk.css": "/EvaMalinina/todo-list-react-hooks/static/css/2.f5e1fc08.chunk.css",
+    "static/js/2.8b140c38.chunk.js": "/EvaMalinina/todo-list-react-hooks/static/js/2.8b140c38.chunk.js",
+    "static/js/2.8b140c38.chunk.js.map": "/EvaMalinina/todo-list-react-hooks/static/js/2.8b140c38.chunk.js.map",
+    "static/js/3.fb7aaafb.chunk.js": "/EvaMalinina/todo-list-react-hooks/static/js/3.fb7aaafb.chunk.js",
+    "static/js/3.fb7aaafb.chunk.js.map": "/EvaMalinina/todo-list-react-hooks/static/js/3.fb7aaafb.chunk.js.map",
+    "index.html": "/EvaMalinina/todo-list-react-hooks/index.html",
+    "static/css/2.f5e1fc08.chunk.css.map": "/EvaMalinina/todo-list-react-hooks/static/css/2.f5e1fc08.chunk.css.map",
+    "static/css/main.6d368f12.chunk.css.map": "/EvaMalinina/todo-list-react-hooks/static/css/main.6d368f12.chunk.css.map",
+    "static/js/2.8b140c38.chunk.js.LICENSE.txt": "/EvaMalinina/todo-list-react-hooks/static/js/2.8b140c38.chunk.js.LICENSE.txt",
+    "static/media/index.css": "/EvaMalinina/todo-list-react-hooks/static/media/roboto-vietnamese-400-normal.52cebac0.woff2"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.00e4f5eb.js",
+    "static/css/2.f5e1fc08.chunk.css",
+    "static/js/2.8b140c38.chunk.js",
+    "static/css/main.6d368f12.chunk.css",
+    "static/js/main.77a90fb7.chunk.js"
+  ]
+}
