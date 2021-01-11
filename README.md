@@ -1,4 +1,4 @@
-# Create React App easy 
+# Create Todo React App easy with Material UI
 
 This recreate the project in your IDE run 
 ### `npx create-react-app <name of your app>`
@@ -36,22 +36,45 @@ To use icons run:
 ### `npm install @material-ui/icons`
 
 Button example:
-`
+```
 import  React from 'react';
 import Button from "@material-ui/core/Button";
 
-   <Button
-        type="submit"
-        alt="add-note"
-        className={classes.root}
-        onKeyPress={preventSubmit}
-    >
-        Add task
-    </Button>
-`
+// custom styles with Material UI
+const useStyles = makeStyles({
+    root: {
+        background: 'linear-gradient(45deg, gray 30%, black 90%)',
+        border: 0,
+        color: 'white',
+        height: 30,
+        padding: '0 10px',
+        whiteSpace: 'nowrap',
+        margin: '15px 0 0 20px',
+    }
+});
+
+
+const Button = () => {
+   const classes = useStyles();
+    
+   return (
+      <Button
+           type="submit"
+           alt="add-note"
+           className={classes.root}
+       >
+           Add task
+       </Button>
+     )
+     
+export  default Button;
+```
 
 Then you can see the result - button "ADD TASK" look like:
 
-![Button example]("src/demo/button git.gif")
+![Button example](https://github.com/EvaMalinina/todo-list-react-hooks/blob/main/src/demo/button%20git.gif)
+
+That was easy, right :)
+
 
 
