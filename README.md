@@ -24,7 +24,7 @@ To install run:
 
 Material-UI was developed based on the Roboto font.
 The Roboto font will not be automatically loaded into Material-UI.
-## So be sure to install it.
+*So be sure to install it.*
 
 To install run:
 ### `npm install fontsource-roboto`
@@ -36,7 +36,6 @@ To use icons run:
 ### `npm install @material-ui/icons`
 
 Button example:
-### 
 `
 import  React from 'react';
 import Button from "@material-ui/core/Button";
@@ -51,8 +50,7 @@ import Button from "@material-ui/core/Button";
     </Button>
 `
 
-Then you can see the result look like:
+Then you can see the result - button "ADD TASK" look like:
 https://www.loom.com/share/5e0e8621bb3e469d8a42e903750674cb
 
-![Button Demo](https://www.loom.com/share/5e0e8621bb3e469d8a42e903750674cb)
 
