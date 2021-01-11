@@ -1,6 +1,6 @@
 import  React, { useState, useEffect, useRef } from 'react';
-import TodoCreator from "./formInput";
-import TodoList from "./list";
+import TodoCreator from "./FormInput";
+import TodoList from "./List";
 import { createMuiTheme } from "@material-ui/core/styles";
 
 
