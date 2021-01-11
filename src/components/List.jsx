@@ -89,11 +89,18 @@ const TodoList = ({ theme, todos, completeTodo, editTodo, deleteTodo, saveTodo, 
                                 </>
                                 :
                                 <>
+                                    <label
+                                        htmlFor="task" // better accessibility with HTML
+                                        className="visuallyhidden"
+                                    >
+                                        {todo.text}
+                                    </label>
                                     <input
                                         className="form__edit-input"
                                         defaultValue={todo.text}
                                         ref={(element) => noteRef.current[inx] = element}
                                         onKeyPress={preventSubmit}
+                                        id="task"
                                     />
                                     <ListItemIcon>
                                         <IconButton onClick={() => saveTodo(inx)} edge="end" aria-label="delete">

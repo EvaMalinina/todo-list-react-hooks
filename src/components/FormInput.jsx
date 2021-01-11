@@ -30,7 +30,7 @@ const TodoCreator = ({ theme, todo, setTodo, clearInput, inputRef, isInputEmpty,
                 <FormControl   className={classes.label}>
                     <TextField
                         id="outlined-basic"
-                        label="What's need to be done?"
+                        label="What's need to be done?" // better accessibility with Material UI
                         value={todo}
                         variant="outlined"
                         onChange={(e) => setTodo(e.target.value)}
