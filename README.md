@@ -1,4 +1,4 @@
-# Create React App easy 
+# Create Todo React App easy with Material UI
 
 This recreate the project in your IDE run 
 ### `npx create-react-app <name of your app>`
